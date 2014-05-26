@@ -9,6 +9,9 @@ var routes = {
   "fizzbuzz": "/fizzbuzz"
 }
 
+// Force entities embedding
+var FORCEEMBED = true;
+
 var baseQueryString = ["add", "startsAt", "endsAt", "firstNumber", "secondNumber"];
 
 var cleanQS = function(qs) {
@@ -116,7 +119,8 @@ app.get(routes.fizzbuzz, function(req, res) {
     if (bizzFuzz.isNextAfter(rep.properties.number)) {
       var nextNumber = bizzFuzz.nextAfter(rep.properties.number)
 
-      if ("embed" in req.query) {
+      if (FORCEEMBED || 
+          "embed" in req.query) {
         rep.entities = [embed(bizzFuzz, nextNumber)]
       } else {
         var link = { rel: ["next"], href: buildUrl(nextNumber, req.query) }

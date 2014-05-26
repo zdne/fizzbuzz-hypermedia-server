@@ -21,6 +21,9 @@
     "bizzfuzz": "~1.0.3",
     "underscore": "~1.6.0"
   },
+  "devDependencies": {
+    "underscore-cli": "~0.2.17"
+  },
   "bugs": {
     "url": "https://github.com/smizell/fizzbuzz-hypermedia-server/issues"
   },
