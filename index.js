@@ -97,6 +97,8 @@ app.get(routes.home, function(req, res){
       bizzFuzz = new BizzFuzz(cleanedQS),
       rep = baseRepresentation(req.query, bizzFuzz);
 
+  console.log('call: ' + routes.home);
+
   rep.actions = [
     startFizzBuzzAction(),
     getValueAction()
@@ -104,12 +106,15 @@ app.get(routes.home, function(req, res){
 
   res.setHeader('Content-Type', 'application/json');
   res.end(JSON.stringify(rep));
+
 });
 
 app.get(routes.fizzbuzz, function(req, res) {
   var cleanedQS = cleanQS(req.query),
       bizzFuzz = new BizzFuzz(cleanedQS),
       rep = baseRepresentation(req.query, bizzFuzz);
+
+  console.log('call: ' + routes.fizzbuzz + ' (' + req.query['number'] + ')');      
 
   if ("number" in req.query) {
     rep.properties = {};
