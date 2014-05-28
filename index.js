@@ -9,7 +9,7 @@ var routes = {
   "fizzbuzz": "/fizzbuzz"
 }
 
-// Force entities embedding
+// Embed entities
 var FORCEEMBED = true;
 
 var baseQueryString = ["add", "startsAt", "endsAt", "firstNumber", "secondNumber"];
@@ -97,7 +97,7 @@ app.get(routes.home, function(req, res){
       bizzFuzz = new BizzFuzz(cleanedQS),
       rep = baseRepresentation(req.query, bizzFuzz);
 
-  console.log('call: ' + routes.home);
+  console.log('request ' + routes.home);
 
   rep.actions = [
     startFizzBuzzAction(),
@@ -114,7 +114,7 @@ app.get(routes.fizzbuzz, function(req, res) {
       bizzFuzz = new BizzFuzz(cleanedQS),
       rep = baseRepresentation(req.query, bizzFuzz);
 
-  console.log('call: ' + routes.fizzbuzz + ' (' + req.query['number'] + ')');      
+  console.log('request ' + routes.fizzbuzz + ' (' + req.query['number'] + ')');      
 
   if ("number" in req.query) {
     rep.properties = {};
